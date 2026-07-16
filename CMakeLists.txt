@@ -31,6 +31,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         songrepository.h songrepository.cpp
         playlistrepository.h playlistrepository.cpp
         albumrepository.h albumrepository.cpp
+        accountrepository.h accountrepository.cpp
+
+        listenerrepository.h listenerrepository.cpp
+        artistrepository.h artistrepository.cpp
 
 
     )

@@ -29,6 +29,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         song.h song.cpp
         abstractrepository.h abstractrepository.cpp
         songrepository.h songrepository.cpp
+        playlistrepository.h playlistrepository.cpp
 
 
     )

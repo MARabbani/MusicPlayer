@@ -1,15 +1,15 @@
+#pragma once
 #ifndef PLAYLIST_H
 #define PLAYLIST_H
-#include "account.h"
-#include <QObject>
-
-class PlayList : public Account
+#include <string>
+using namespace std;
+class PlayList
 {
-    Q_OBJECT
+public:
     string playlistname;
     string listenerid;
     string playlistid;
-public:
+
     PlayList();
 };
 

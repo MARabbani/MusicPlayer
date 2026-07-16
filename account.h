@@ -7,13 +7,14 @@ using namespace std;
 enum class Role{Artist , Listener};
 class Account
 {
+public:
     string fullname;
     string username;
     string biography;
     int id;
     Role role;
     string password;
-public:
+
     Account();
 };
 

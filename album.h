@@ -1,15 +1,15 @@
+#pragma once
 #ifndef ALBUM_H
 #define ALBUM_H
-#include "account.h"
-#include <QObject>
-
-class Album : public Account
+#include <string>
+using namespace std;
+class Album
 {
-    Q_OBJECT
-    string albumname;
-    string albumid;
-    string artistid;
 public:
+    string albumname;
+    int albumid;
+    int artistid;
+
     Album();
 };
 

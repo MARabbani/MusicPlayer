@@ -1,20 +1,20 @@
+#pragma once
 #ifndef SONG_H
 #define SONG_H
-
-#include <QObject>
+#include <string>
 using namespace std;
 
 class Song
 {
-    Q_OBJECT
+public:
     string songname;
-    string releaseyear;
+    int releaseyear;
     string genre;
     string filename;
     string songid;
-    string artistid;
-    string albumid;
-public:
+    int artistid;
+    int albumid;
+
     Song();
 };
 

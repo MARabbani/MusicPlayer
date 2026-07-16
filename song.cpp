@@ -5,11 +5,11 @@ Song::Song() {
     releaseyear=0;
     genre="";
     filename="";
-    songid="";
+    songid=0;
     artistid=0;
     albumid=0;
 }
-Song::Song(string songname, int releaseyear,string genre, string filename, string songid , int artistid,int albumid){
+Song::Song(string songname, int releaseyear,string genre, string filename, int songid , int artistid,int albumid){
     this->songname= songname;
     this->releaseyear=releaseyear;
     this->genre= genre;

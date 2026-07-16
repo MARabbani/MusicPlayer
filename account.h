@@ -1,17 +1,17 @@
+#pragma once
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
 #include <string>
 using namespace std;
-#include <QObject>
 
+enum class Role{Artist , Listener};
 class Account
 {
-    Q_OBJECT
     string fullname;
     string username;
     string biography;
-    int ID;
-    string role;
+    int id;
+    Role role;
     string password;
 public:
     Account();

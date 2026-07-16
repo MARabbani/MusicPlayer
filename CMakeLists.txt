@@ -27,6 +27,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         playlist.h playlist.cpp
         album.h album.cpp
         song.h song.cpp
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET MusicPlayer APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

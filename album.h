@@ -11,6 +11,7 @@ public:
     int artistid;
 
     Album();
+    Album(string albumname,int albumid, int artistid);
 };
 
 #endif // ALBUM_H

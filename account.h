@@ -16,6 +16,7 @@ public:
     string password;
 
     Account();
+    Account(int id, string fullname , string username,  string biography, Role role, string password);
 };
 
 #endif // ACCOUNT_H

@@ -16,6 +16,7 @@ public:
     int albumid;
 
     Song();
+    Song(string songname, int releaseyear,string genre, string filename, string songid , int artistid,int albumid);
 };
 
 #endif // SONG_H

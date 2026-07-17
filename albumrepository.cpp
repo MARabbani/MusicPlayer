@@ -14,3 +14,11 @@ optional<Album> AlbumRepository::search(int id)  {
     if (it!=data.end()) {return it->second;}
     return nullopt;
 }
+
+vector<Album> AlbumRepository::albums(int artistid){
+    vector<Album> resault;
+    for (auto& [id,a]:data)
+        if (a.artistid == artistid) resault.push_back(a);
+    return resault;
+};
+

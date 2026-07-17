@@ -14,3 +14,10 @@ optional<Account> AccountRepository::search(int id){
     if (it!=data.end()) return it->second;
     return std::nullopt;
 }
+
+optional<Account> AccountRepository::searchByUsername(string& username){
+    for (auto& [id,acc]: data)
+        if (acc.username==username)
+            return acc;
+    return nullopt;
+};

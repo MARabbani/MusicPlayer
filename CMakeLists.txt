@@ -37,6 +37,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         artistrepository.h artistrepository.cpp
         authservice.h authservice.cpp
         artistservice.h artistservice.cpp
+        listenerservice.h listenerservice.cpp
 
 
     )

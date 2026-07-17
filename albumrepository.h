@@ -15,6 +15,8 @@ public:
     int save(Album& album) override;
     bool remove(int id) override ;
     optional<Album> search(int id) override;
+    vector<Album> albums(int artistid);
+
 
 };
 #endif // ALBUMREPOSITORY_H

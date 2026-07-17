@@ -39,6 +39,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         artistservice.h artistservice.cpp
         listenerservice.h listenerservice.cpp
         songservice.h songservice.cpp
+        albumservice.h albumservice.cpp
 
 
     )

@@ -16,3 +16,35 @@ optional<Song> SongRepository::search(int id){
     if(it!=data.end()){return it->second;}
     return nullopt;
 };
+vector<Song> SongRepository::singleSongs(int artistid){
+    vector<Song> result;
+    for(auto& [id,s]:data){
+        if(s.artistid==artistid && s.albumid==0) result.push_back(s);
+    }
+    return result;
+};
+vector<Song> SongRepository::getByAlbum(int albumid){
+    vector<Song> result;
+    for(auto& [id,s]:data){
+        if(s.albumid==albumid) result.push_back(s);
+    }
+    return result;
+};
+vector<Song> SongRepository::getByArtist(int artistid){
+    vector<Song> result;
+    for(auto& [id,s]:data){
+        if(s.artistid==artistid) result.push_back(s);
+    }
+    return result;
+};
+vector<Song> SongRepository::getByPlaylist(int playlistid , const vector<int>& songids){
+    vector<Song> result;
+    for(int si:songids){
+        auto op=search(si);
+        if(op) result.push_back(*op);
+    }
+    return result;
+};
+vector<Song> SongRepository::getByLikedSongs(int listenerid,const vector<int>& likedids){
+    return getByPlaylist(0,likedids);
+};

@@ -41,6 +41,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         songservice.h songservice.cpp
         albumservice.h albumservice.cpp
         playlistservice.h playlistservice.cpp
+        loginwindow.h loginwindow.cpp
 
 
     )

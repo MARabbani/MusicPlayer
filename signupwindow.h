@@ -36,7 +36,7 @@ private slots:
             Account newaccount(0,name,user,bio,role,pass);
             int newaccid=authservice.signUp(newaccount);
             emit signUpSuccess(newaccount);
-        } catch (const std::exception& e) {
+        } catch (const exception& e) {
             errorLabel->setText(QString::fromStdString(e.what()));
         }
     }

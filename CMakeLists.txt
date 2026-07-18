@@ -42,6 +42,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         albumservice.h albumservice.cpp
         playlistservice.h playlistservice.cpp
         loginwindow.h loginwindow.cpp
+        signupwindow.h signupwindow.cpp
 
 
     )

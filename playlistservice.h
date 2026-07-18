@@ -15,7 +15,7 @@ public:
     void deletePlaylist(int playlistid);
     void addSong(int playlistid,int songid);
     void removeSong(int playlistid,int songid);
-    vector<Song> getPlaylistSongs(int playlistid);
+    vector<Song> getPlaylistSongs(int playlistid,const vector<int>& songids);
     vector<PlayList> getListenerPlaylists(int listenerid);
     static void sortByName(vector<PlayList>& playlists);
 };

@@ -25,8 +25,8 @@ void PlaylistService::addSong(int playlistid,int songid){
 void PlaylistService::removeSong(int playlistid,int songid){
     playlistrep.removeSong(playlistid,songid);
 };
-vector<Song> PlaylistService::getPlaylistSongs(int playlistid){
-    return songrep.getByPlaylist(playlistid);
+vector<Song> PlaylistService::getPlaylistSongs(int playlistid, const vector<int>& songids){
+    return songrep.getByPlaylist(playlistid,songids);
 };
 vector<PlayList> PlaylistService::getListenerPlaylists(int listenerid){
     return playlistrep.playlists(listenerid);

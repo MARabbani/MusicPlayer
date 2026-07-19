@@ -1,23 +1,45 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#pragma once
 #include <QMainWindow>
+#include <QStackedWidget>
+#include "LoginWindow.h"
+#include "SignUpWindow.h"
+#include "ArtistPanel.h"
+#include "ListenerPanel.h"
 
-QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
-}
-QT_END_NAMESPACE
-
-class MainWindow : public QMainWindow
-{
+class MainWindow:public QMainWindow {
     Q_OBJECT
+    QStackedWidget* stack;
+    ArtistService& artistservice;
+    ListenerService& listenerservice;
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow() override;
+    MainWindow(AuthService& authservice,
+               ArtistService& aservice,
+               ListenerService& lservice):artistservice(aservice),listenerservice(lservice)
+    {
+        stack = new QStackedWidget(this);
+        setCentralWidget(stack);
 
-private:
-    Ui::MainWindow *ui;
+        auto* login=new LoginWindow(authservice);
+        auto* signup= new SignUpWindow(authservice);
+
+        connect(login, &LoginWindow::loginSuccess, this, [this](Account acc) {
+            if (acc.role == Role::Artist)
+                stack->addWidget(new ArtistPanel(acc,artistservice));
+            else
+                stack->addWidget(new ListenerPanel(acc, listenerservice));
+            stack->setCurrentIndex(stack->count() - 1);
+        });
+        connect(login, &LoginWindow::switchToSignUp, this, [this,signup]() {
+            stack->setCurrentWidget(signup);
+        });
+
+        stack->addWidget(login);
+        stack->addWidget(signup);
+        stack->setCurrentWidget(login);
+    }
 };
 #endif // MAINWINDOW_H

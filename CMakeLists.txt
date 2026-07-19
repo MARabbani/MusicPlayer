@@ -44,6 +44,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         loginwindow.h loginwindow.cpp
         signupwindow.h signupwindow.cpp
         artistpanel.h artistpanel.cpp
+        listenerpanel.h listenerpanel.cpp
 
 
     )

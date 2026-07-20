@@ -20,14 +20,16 @@ public:
     ArtistPanel(Account artist,ArtistService& service,QWidget* parent=nullptr);
 
 private slots:
-    void refreshAlbums(){
-        albumlist->clear();
-        for (auto& a:artistservice.getArtistAlbum(currentartist.id))
-            albumlist->addItem(QString::fromStdString(a.albumname));
-    }
-    void refreshSongs(int albumId) {
-        songlist->clear();
-        for (auto& s:artistservice.getAlbumSong(albumId))
-            songlist->addItem(QString::fromStdString(s.songname));
-    }
+    void refreshAlbums();
+    // {
+    //     albumlist->clear();
+    //     for (auto& a:artistservice.getArtistAlbum(currentartist.id))
+    //         albumlist->addItem(QString::fromStdString(a.albumname));
+    // }
+    void refreshSongs(int albumId);
+    // {
+    //     songlist->clear();
+    //     for (auto& s:artistservice.getAlbumSong(albumId))
+    //         songlist->addItem(QString::fromStdString(s.songname));
+    // }
 };

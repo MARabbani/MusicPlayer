@@ -1,7 +1,5 @@
 #include <QApplication>
 #include "mainwindow.h"
-#include "artistservice.h"
-#include "listenerservice.h"
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);

@@ -18,6 +18,7 @@ class SignUpWindow:public QWidget
     QLineEdit* bioedit;
     QComboBox* rolebox;
     QPushButton* signupbtn;
+    QPushButton* backbtn;
     QLabel* errorLabel;
     AuthService& authservice;
 public:

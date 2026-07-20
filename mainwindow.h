@@ -38,6 +38,10 @@ public:
             stack->setCurrentWidget(signup);
         });
 
+        connect(signup, &SignUpWindow::switchToLogin, this, [this, login]() {
+            stack->setCurrentWidget(login);
+        });
+
         stack->addWidget(login);
         stack->addWidget(signup);
         stack->setCurrentWidget(login);

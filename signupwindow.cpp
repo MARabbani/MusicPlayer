@@ -24,9 +24,15 @@ SignUpWindow::SignUpWindow(AuthService& service,QWidget* parent):QWidget(parent)
     layout->addWidget(new QLabel("Bio:"));      layout->addWidget(bioedit);
     layout->addWidget(new QLabel("Role:"));     layout->addWidget(rolebox);
     layout->addWidget(signupbtn);
+
+    backbtn = new QPushButton("Back to Login", this);
+    layout->addWidget(backbtn);
+
     layout->addWidget(errorLabel);
 
     connect(signupbtn, &QPushButton::clicked, this, &SignUpWindow::onSignUpClicked);
+
+    connect(backbtn, &QPushButton::clicked, this, &SignUpWindow::switchToLogin);
 
 }
 

@@ -1,4 +1,5 @@
 #include "listenerpanel.h"
+#include <QVBoxLayout>
 
 ListenerPanel::ListenerPanel(Account listener, ListenerService& service, QWidget* parent)
     : QWidget(parent),
@@ -8,6 +9,13 @@ ListenerPanel::ListenerPanel(Account listener, ListenerService& service, QWidget
     playlistlist = new QListWidget(this);
     songlist = new QListWidget(this);
     searchedit = new QLineEdit(this);
+
+    auto* layout = new QVBoxLayout(this);
+    layout->addWidget(searchedit);
+    layout->addWidget(playlistlist);
+    layout->addWidget(songlist);
+
+    refreshPlaylists();
 
 }
 

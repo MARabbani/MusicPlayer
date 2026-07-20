@@ -16,14 +16,15 @@ private:
     QLineEdit* searchedit;
 
 public:
-    ListenerPanel(Account listener , ListenerService& service, QWidget* parent=nullptr);
+    explicit ListenerPanel(Account listener , ListenerService& service, QWidget* parent=nullptr);
 private slots:
-    void refreshPlaylists() {
-        playlistlist->clear();
-        playlistlist->addItem("Songs Favorite"); // ثابت
-        for (auto& p:listenerservice.getPlaylists(currentlistener.id))
-            playlistlist->addItem(QString::fromStdString(p.playlistname));
-    }
+    void refreshPlaylists();
+    // {
+    //     playlistlist->clear();
+    //     playlistlist->addItem("Songs Favorite");
+    //     for (auto& p:listenerservice.getPlaylists(currentlistener.id))
+    //         playlistlist->addItem(QString::fromStdString(p.playlistname));
+    // }
 };
 
 #endif // LISTENERPANEL_H

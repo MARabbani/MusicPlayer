@@ -1,5 +1,14 @@
 #include "accountrepository.h"
+#include <fstream>
+#include <sstream>
 
+AccountRepository::AccountRepository() {
+    loadFromFile();
+}
+
+AccountRepository::~AccountRepository() {
+    saveToFile();
+}
 int AccountRepository::save(Account& account){
     Account a =account;
     if (a.id==0) a.id = nextid++;

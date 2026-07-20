@@ -7,6 +7,7 @@
 #include <QLabel>
 #include "AuthService.h"
 #include <QString>
+#include <QVBoxLayout>
 class LoginWindow:public QWidget
 {
     Q_OBJECT
@@ -17,7 +18,27 @@ class LoginWindow:public QWidget
     QLabel* errorlabel;
     AuthService& authservice;
 public:
-    LoginWindow(AuthService& service,QWidget* parent=nullptr): QWidget(parent),authservice(service){};
+    LoginWindow(AuthService& service,QWidget* parent=nullptr): QWidget(parent),authservice(service){
+        usernameedit = new QLineEdit(this);
+        passwordedit = new QLineEdit(this);
+        passwordedit->setEchoMode(QLineEdit::Password);
+        loginbtn = new QPushButton("Login", this);
+        gotosignupbtn = new QPushButton("Sign Up", this);
+        errorlabel = new QLabel(this);
+
+        auto* layout = new QVBoxLayout(this);
+        layout->addWidget(new QLabel("Username:"));
+        layout->addWidget(usernameedit);
+        layout->addWidget(new QLabel("Password:"));
+        layout->addWidget(passwordedit);
+        layout->addWidget(loginbtn);
+        layout->addWidget(gotosignupbtn);
+        layout->addWidget(errorlabel);
+
+        connect(loginbtn, &QPushButton::clicked, this, &LoginWindow::onLoginClicked);
+        connect(gotosignupbtn, &QPushButton::clicked, this, &LoginWindow::switchToSignUp);
+
+    };
 signals:
     void loginSuccess(Account acc);
     void switchToSignUp();

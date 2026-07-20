@@ -1,12 +1,34 @@
 #include "signupwindow.h"
 #include <string>
 #include <QString>
+#include <QVBoxLayout>
 
 using namespace std;
 
-SignUpWindow::SignUpWindow(AuthService& service,QWidget* parent)
-    : QWidget(parent), authservice(service)
-{}
+SignUpWindow::SignUpWindow(AuthService& service,QWidget* parent):QWidget(parent), authservice(service)
+{
+    fullnameedit = new QLineEdit(this);
+    usernameedit = new QLineEdit(this);
+    passwordedit = new QLineEdit(this);
+    passwordedit->setEchoMode(QLineEdit::Password);
+    bioedit      = new QLineEdit(this);
+    rolebox      = new QComboBox(this);
+    rolebox->addItems({"Artist", "Listener"});
+    signupbtn    = new QPushButton("Sign Up", this);
+    errorLabel   = new QLabel(this);
+
+    auto* layout = new QVBoxLayout(this);
+    layout->addWidget(new QLabel("Full Name:")); layout->addWidget(fullnameedit);
+    layout->addWidget(new QLabel("Username:")); layout->addWidget(usernameedit);
+    layout->addWidget(new QLabel("Password:")); layout->addWidget(passwordedit);
+    layout->addWidget(new QLabel("Bio:"));      layout->addWidget(bioedit);
+    layout->addWidget(new QLabel("Role:"));     layout->addWidget(rolebox);
+    layout->addWidget(signupbtn);
+    layout->addWidget(errorLabel);
+
+    connect(signupbtn, &QPushButton::clicked, this, &SignUpWindow::onSignUpClicked);
+
+}
 
 void SignUpWindow::onSignUpClicked(){
     try {

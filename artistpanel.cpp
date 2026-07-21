@@ -20,7 +20,7 @@ ArtistPanel::ArtistPanel(Account artist, ArtistService& service, QWidget* parent
     layout->addWidget(editbtn);
     layout->addWidget(deletebtn);
 
-    connect(albumlist, &QListWidget::currentRowChanged, this,[this](QListWidgetItem* current,QListWidgetItem* previous/* &ArtistPanel::refreshSongs*/){
+    connect(albumlist, &QListWidget::currentItemChanged, this,[this](QListWidgetItem* current,QListWidgetItem* previous/* &ArtistPanel::refreshSongs*/){
         if(current) refreshSongs(current->data(Qt::UserRole).toInt());
     });
     connect(addalbumbtn, &QPushButton::clicked, this, [this](){
@@ -60,7 +60,7 @@ void ArtistPanel::refreshAlbums() {
     for (auto& a:artistservice.getArtistAlbum(currentartist.id)) {
         QListWidgetItem* item = new QListWidgetItem(QString::fromStdString(a.albumname));
         item->setData(Qt::UserRole, a.albumid);
-        albumlist->addItem(QString::fromStdString(a.albumname));
+        albumlist->addItem(item);
     }
 }
 

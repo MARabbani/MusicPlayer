@@ -31,3 +31,13 @@ bool ListenerService::isLiked(int listenerid,int songid){
 vector<PlayList> ListenerService::getPlaylists(int listenerid){
     return playlistrep.playlists(listenerid);
 };
+void ListenerService::ensureFavoritePlaylist(int listenerId) {
+    auto playlists = playlistrep.playlists(listenerId);
+    for (auto& p : playlists) {
+        if (p.playlistname == "Favorite Songs")
+            return;
+    }
+
+    PlayList fav("Favorite Songs", listenerId, 0);
+    playlistrep.save(fav);
+}

@@ -1,5 +1,6 @@
 #include "listenerpanel.h"
 #include <QVBoxLayout>
+#include <QLineEdit>
 
 ListenerPanel::ListenerPanel(Account listener, ListenerService& service, QWidget* parent)
     : QWidget(parent),
@@ -14,8 +15,21 @@ ListenerPanel::ListenerPanel(Account listener, ListenerService& service, QWidget
     layout->addWidget(searchedit);
     layout->addWidget(playlistlist);
     layout->addWidget(songlist);
+    searchedit->setPlaceholderText("searching song...");
 
     refreshPlaylists();
+
+connect(searchedit, &QLineEdit::textChanged, this, [this](const QString &text){
+        if(songlist->count() == 0) return;
+        for(int i = 0; i < songlist->count(); ++i) {
+            QListWidgetItem* item = songlist->item(i);
+            if(item->text().contains(text, Qt::CaseInsensitive)) {
+                item->setHidden(false);
+            } else {
+                item->setHidden(true);
+            }
+        }
+    });
 
 }
 

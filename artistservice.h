@@ -19,6 +19,7 @@ public:
     vector<Album> getArtistAlbum(int artistid);
     vector<Song> getAlbumSong(int albumid);
     vector<Song> getSingle(int artistid);
+
 };
 
 #endif // ARTISTSERVICE_H

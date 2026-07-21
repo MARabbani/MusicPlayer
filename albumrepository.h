@@ -18,5 +18,6 @@ public:
     vector<Album> albums(int artistid);
 
 
+
 };
 #endif // ALBUMREPOSITORY_H

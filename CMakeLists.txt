@@ -45,6 +45,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         signupwindow.h signupwindow.cpp
         artistpanel.h artistpanel.cpp
         listenerpanel.h listenerpanel.cpp
+        addsongdialog.h addsongdialog.cpp
 
 
 

@@ -30,8 +30,9 @@ public:
         connect(login, &LoginWindow::loginSuccess, this, [this](Account acc) {
             if (acc.role == Role::Artist)
                 stack->addWidget(new ArtistPanel(acc,artistservice));
-            else
+            else{
                 stack->addWidget(new ListenerPanel(acc, listenerservice));
+            }
             stack->setCurrentIndex(stack->count() - 1);
         });
         connect(login, &LoginWindow::switchToSignUp, this, [this,signup]() {

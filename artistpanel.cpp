@@ -1,4 +1,5 @@
 #include "artistpanel.h"
+#include "AddSongDialog.h"
 #include <QVBoxLayout>
 #include <QInputDialog>
 #include <QMessageBox>
@@ -46,6 +47,21 @@ ArtistPanel::ArtistPanel(Account artist, ArtistService& service, QWidget* parent
         artistservice.deleteAlbum(albumId);
         refreshAlbums();
         songlist->clear();
+    });
+
+    connect(addsongbtn, &QPushButton::clicked, this, [this]() {
+        AddSongDialog dlg(this);
+        if (dlg.exec() != QDialog::Accepted) return;
+
+        QListWidgetItem* item = albumlist->currentItem();
+        int albumId = item ? item->data(Qt::UserRole).toInt() : 0;
+
+        std::string name = dlg.name().toStdString();
+        std::string genre = dlg.genre().toStdString();
+        std::string path = dlg.path().toStdString();
+        artistservice.createSong(currentartist.id, name, dlg.year(), genre, path, albumId);
+
+        refreshSongs(albumId);
     });
 
     refreshAlbums();

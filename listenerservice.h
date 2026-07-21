@@ -22,7 +22,6 @@ public:
     void unlikeSong(int listenerid , int songid);
     bool isLiked(int listenerid,int songid);
     vector<PlayList> getPlaylists(int listenerid);
-    void ensureFavoritePlaylist(int listenerId);
 };
 
 #endif // LISTENERSERVICE_H

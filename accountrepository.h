@@ -16,9 +16,6 @@ protected:
     void saveToFile();
 
 public:
-    AccountRepository();
-    ~AccountRepository();
-
     int save(Account& account) override;
     bool remove(int id) override;
     optional<Account> search(int id) override;

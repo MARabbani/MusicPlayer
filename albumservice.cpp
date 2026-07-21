@@ -14,8 +14,7 @@ void AlbumService::sortByName(vector<Album>& albums){
 void AlbumService::deleteAlbum(int albumid){
     auto songs =songrep.getByAlbum(albumid);
     for(auto& s:songs){
-        s.albumid=0;
-        songrep.save(s);
+        songrep.remove(s.songid);
     }
     albumrep.remove(albumid);
 };

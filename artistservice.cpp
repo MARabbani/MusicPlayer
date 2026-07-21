@@ -6,7 +6,13 @@ int ArtistService::createAlbum(int artistid,string& name){
     return albumrep.save(album);
 };
 void ArtistService::updateAlbum(Album& album){albumrep.save(album);};
-void ArtistService::deleteAlbum(int albumid){albumrep.remove(albumid);};
+void ArtistService::deleteAlbum(int albumid){
+    auto songs = songrep.getByAlbum(albumid);
+    for (auto& s: songs){
+        songrep.remove(s.songid);
+    }
+    albumrep.remove(albumid);
+};
 int ArtistService::createSong(int artistid, string& name, int year,string& genre,string& filepath,int albumid){
     Song song(name,year,genre,filepath,0,artistid,albumid);
     return songrep.save(song);

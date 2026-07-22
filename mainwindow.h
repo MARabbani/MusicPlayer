@@ -27,7 +27,7 @@ public:
         auto* signup= new SignUpWindow(authservice);
 
 
-        connect(login, &LoginWindow::loginSuccess, this, [this](Account acc) {
+        connect(login, &LoginWindow::loginSuccess, this, [this,&authservice](Account acc) {
             if (acc.role == Role::Artist)
                 stack->addWidget(new ArtistPanel(acc,artistservice));
             else{

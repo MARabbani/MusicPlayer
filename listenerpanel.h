@@ -17,11 +17,9 @@ private:
 
     QStackedWidget* stack;
 
-    // Artists view
     QWidget* artistsPage;
     QListWidget* artistlist;
 
-    // Artist detail view
     QWidget* artistDetailPage;
     QLabel* artistnamelabel;
     QListWidget* albumlist;
@@ -29,20 +27,17 @@ private:
     QPushButton* addtoplaylistbtn;
     QPushButton* likesonginartistbtn;
 
-    // Playlists view
     QWidget* playlistsPage;
     QListWidget* playlistlist;
     QPushButton* createplaylistbtn;
     QPushButton* deleteplaylistbtn;
     QPushButton* editplaylistbtn;
 
-    // Playlist detail view
     QWidget* playlistDetailPage;
     QLabel* playlistnamelabel;
     QListWidget* playlistsonglist;
     QPushButton* removesongbtn;
 
-    // Nav buttons
     QPushButton* showartistsbtn;
     QPushButton* showplaylistsbtn;
 

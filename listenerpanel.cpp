@@ -10,13 +10,11 @@
 ListenerPanel::ListenerPanel(Account listener, ListenerService& service, QWidget* parent)
     : QWidget(parent), currentlistener(listener), listenerservice(service)
 {
-    // ensure favorite playlist exists
     if (!listenerservice.getFavoritePlaylist(listener.id).has_value())
         listenerservice.createFavoritePlaylist(listener.id);
 
     auto* mainLayout = new QVBoxLayout(this);
 
-    // Nav bar
     auto* navLayout = new QHBoxLayout();
     showartistsbtn  = new QPushButton("Artists", this);
     showplaylistsbtn = new QPushButton("Playlists", this);
@@ -27,7 +25,6 @@ ListenerPanel::ListenerPanel(Account listener, ListenerService& service, QWidget
     stack = new QStackedWidget(this);
     mainLayout->addWidget(stack);
 
-    // --- Artists page ---
     artistsPage = new QWidget();
     auto* apLayout = new QVBoxLayout(artistsPage);
     artistlist = new QListWidget();
@@ -35,7 +32,6 @@ ListenerPanel::ListenerPanel(Account listener, ListenerService& service, QWidget
     apLayout->addWidget(artistlist);
     stack->addWidget(artistsPage);
 
-    // --- Artist detail page ---
     artistDetailPage = new QWidget();
     auto* adLayout = new QVBoxLayout(artistDetailPage);
     auto* backFromArtist = new QPushButton("← Back");
@@ -56,7 +52,6 @@ ListenerPanel::ListenerPanel(Account listener, ListenerService& service, QWidget
     adLayout->addLayout(artistActLayout);
     stack->addWidget(artistDetailPage);
 
-    // --- Playlists page ---
     playlistsPage = new QWidget();
     auto* ppLayout = new QVBoxLayout(playlistsPage);
     playlistlist = new QListWidget();
@@ -72,7 +67,6 @@ ListenerPanel::ListenerPanel(Account listener, ListenerService& service, QWidget
     ppLayout->addLayout(plActLayout);
     stack->addWidget(playlistsPage);
 
-    // --- Playlist detail page ---
     playlistDetailPage = new QWidget();
     auto* pdLayout = new QVBoxLayout(playlistDetailPage);
     auto* backFromPlaylist = new QPushButton("← Back");

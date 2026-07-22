@@ -4,7 +4,6 @@
 #include "AbstractRepository.h"
 #include "Account.h"
 #include <unordered_map>
-#include <vector>
 using namespace std;
 
 class AccountRepository:public AbstractRepository<Account>
@@ -21,12 +20,7 @@ public:
     bool remove(int id) override;
     optional<Account> search(int id) override;
     optional<Account> searchByUsername(string& username);
-    vector<Account> getAllArtists() {
-        vector<Account> result;
-        for (auto& [id, acc] : data)
-            if (acc.role == Role::Artist) result.push_back(acc);
-        return result;
-    }
+
 };
 
 #endif // ACCOUNTREPOSITORY_H

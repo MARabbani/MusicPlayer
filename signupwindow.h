@@ -28,20 +28,6 @@ signals:
     void switchToLogin();
 private slots:
     void onSignUpClicked();
-    // {
-    //     try {
-    //         string name=fullnameedit->text().toStdString();
-    //         string user=usernameedit->text().toStdString();
-    //         string pass=passwordedit->text().toStdString();
-    //         Role role=rolebox->currentText() == "Artist" ? Role::Artist : Role::Listener;
-    //         string bio=bioedit->text().toStdString();
-    //         Account newaccount(0,name,user,bio,role,pass);
-    //         int newaccid=authservice.signUp(newaccount);
-    //         emit signUpSuccess(newaccount);
-    //     } catch (const exception& e) {
-    //         errorLabel->setText(QString::fromStdString(e.what()));
-    //     }
-    // }
 };
 
 #endif // SIGNUPWINDOW_H

@@ -1,4 +1,5 @@
 #include "playlistrepository.h"
+#include <algorithm>
 
 int PlaylistRepository::save(PlayList& playlist){
     PlayList p=playlist;

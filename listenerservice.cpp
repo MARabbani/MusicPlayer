@@ -1,8 +1,19 @@
 #include "listenerservice.h"
 
-ListenerService::ListenerService(PlaylistRepository& prep, SongRepository& srep,
-                                 ListenerRepository& lrep, ArtistRepository& arep, AlbumRepository& abrep)
-    : playlistrep(prep), songrep(srep), listenerrep(lrep), artistrep(arep), albumrep(abrep) {}
+ListenerService::ListenerService(
+    PlaylistRepository& prep,
+    SongRepository& srep,
+    ListenerRepository& lrep,
+    ArtistRepository& arep,
+    AlbumRepository& abrep,
+    AccountRepository& accrep)
+    : playlistrep(prep),
+    songrep(srep),
+    listenerrep(lrep),
+    artistrep(arep),
+    albumrep(abrep),
+    accountrep(accrep)
+{}
 
 int ListenerService::createFavoritePlaylist(int listenerid) {
     string name = "Favorite Songs";
@@ -36,4 +47,11 @@ vector<Song> ListenerService::getPlaylistSongs(int playlistid) {
     auto opt = playlistrep.search(playlistid);
     if (!opt) return {};
     return songrep.getByPlaylist(playlistid, opt->songsid);
+}
+void ListenerService::updateAccount(Account& account) {
+    accountrep.save(account);
+}
+
+void ListenerService::deleteAccount(int listenerid) {
+    accountrep.remove(listenerid);
 }

@@ -7,6 +7,8 @@
 #include <QPushButton>
 #include <QStackedWidget>
 #include <QLabel>
+#include <QComboBox>
+#include <QSpinBox>
 #include "ListenerService.h"
 
 class ListenerPanel : public QWidget {
@@ -26,6 +28,11 @@ private:
     QListWidget* albumsonglist;
     QPushButton* addtoplaylistbtn;
     QPushButton* likesonginartistbtn;
+    QLineEdit* artistSongSearch;
+    QComboBox* artistGenreFilter;
+    QSpinBox* artistYearFilter;
+    QComboBox* artistSortCombo;
+    std::vector<Song> currentArtistSongs;
 
     QWidget* playlistsPage;
     QListWidget* playlistlist;
@@ -37,15 +44,26 @@ private:
     QLabel* playlistnamelabel;
     QListWidget* playlistsonglist;
     QPushButton* removesongbtn;
+    QLineEdit* playlistSongSearch;
+    QComboBox* playlistGenreFilter;
+    QSpinBox* playlistYearFilter;
+    QComboBox* playlistSortCombo;
+    std::vector<Song> currentPlaylistSongs;
 
     QPushButton* showartistsbtn;
     QPushButton* showplaylistsbtn;
+
+    QPushButton* editAccountBtn;
+    QPushButton* deleteAccountBtn;
 
     int selectedArtistId = 0;
     int selectedPlaylistId = 0;
 
 public:
-    explicit ListenerPanel(Account listener, ListenerService& service, QWidget* parent = nullptr);
+    explicit ListenerPanel(Account listener,ListenerService& service,QWidget* parent = nullptr);
+
+signals:
+    void accountDeleted();
 
 private slots:
     void showArtistsPage();
@@ -63,6 +81,11 @@ private slots:
     void refreshPlaylistSongs();
     void removeSelectedSongFromPlaylist();
     void editPlaylist();
+    void applyArtistSongFilter();
+    void applyPlaylistSongFilter();
+    void editAccount();
+    void deleteAccount();
 };
+
 
 #endif // LISTENERPANEL_H

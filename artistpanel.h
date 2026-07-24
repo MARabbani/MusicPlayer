@@ -2,8 +2,9 @@
 #include <QWidget>
 #include <QListWidget>
 #include <QPushButton>
+#include <QComboBox>
+#include <QSpinBox>
 #include "ArtistService.h"
-#include "account.h"
 
 class ArtistPanel:public QWidget{
     Q_OBJECT
@@ -15,21 +16,23 @@ class ArtistPanel:public QWidget{
     QPushButton* addsongbtn;
     QPushButton* editbtn;
     QPushButton* deletebtn;
+    QLineEdit* searchEdit;
+    QComboBox* sortCombo;
+    QComboBox* genreFilter;
+    QSpinBox* yearFilter;
+    QPushButton* editAccountBtn;
+    QPushButton* deleteAccountBtn;
+    vector<Song> currentSongs;
 
 public:
     ArtistPanel(Account artist,ArtistService& service,QWidget* parent=nullptr);
+signals:
+    void accountDeleted();
 
 private slots:
     void refreshAlbums();
-    // {
-    //     albumlist->clear();
-    //     for (auto& a:artistservice.getArtistAlbum(currentartist.id))
-    //         albumlist->addItem(QString::fromStdString(a.albumname));
-    // }
     void refreshSongs(int albumId);
-    // {
-    //     songlist->clear();
-    //     for (auto& s:artistservice.getAlbumSong(albumId))
-    //         songlist->addItem(QString::fromStdString(s.songname));
-    // }
+    void applyFilter();
+    void editAccount();
+    void deleteAccount();
 };

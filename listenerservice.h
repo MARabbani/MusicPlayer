@@ -14,9 +14,12 @@ class ListenerService
     ListenerRepository& listenerrep;
     ArtistRepository& artistrep;
     AlbumRepository& albumrep;
+    AccountRepository& accountrep;
+
 public:
     ListenerService(PlaylistRepository& prep, SongRepository& srep,
-                    ListenerRepository& lrep, ArtistRepository& arep, AlbumRepository& abrep);
+                    ListenerRepository& lrep, ArtistRepository& arep,
+                    AlbumRepository& abrep, AccountRepository& accrep);
     int createFavoritePlaylist(int listenerid);
     int createPlaylist(int listenerid,string& name);
     void updatePlaylist(PlayList& playlist);
@@ -33,6 +36,11 @@ public:
     vector<Song> getSingles(int artistid);
     optional<PlayList> getFavoritePlaylist(int listenerid);
     vector<Song> getPlaylistSongs(int playlistid);
+    void updateAccount(Account& account);
+    void deleteAccount(int listenerid);
+
+
+
 };
 
 #endif // LISTENERSERVICE_H

@@ -5,7 +5,6 @@
 #include "Playlist.h"
 #include <unordered_map>
 #include <vector>
-#include <algorithm>
 
 class PlaylistRepository : AbstractRepository<PlayList>
 {

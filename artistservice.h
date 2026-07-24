@@ -3,13 +3,15 @@
 #pragma once
 #include "AlbumRepository.h"
 #include "SongRepository.h"
+#include "accountrepository.h"
 
 class ArtistService
 {
     AlbumRepository& albumrep;
     SongRepository& songrep;
+    AccountRepository& accountrep;
 public:
-    ArtistService(AlbumRepository& arep,SongRepository& srep);
+    ArtistService(AlbumRepository& arep, SongRepository& srep, AccountRepository& accrep);
     int createAlbum(int artistid,string& name);
     void updateAlbum(Album& album);
     void deleteAlbum(int albumid);
@@ -19,6 +21,8 @@ public:
     vector<Album> getArtistAlbum(int artistid);
     vector<Song> getAlbumSong(int albumid);
     vector<Song> getSingle(int artistid);
+    void updateAccount(Account& account);
+    void deleteAccount(int accountId);
 
 };
 

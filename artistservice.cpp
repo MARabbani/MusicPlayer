@@ -1,10 +1,7 @@
 #include "artistservice.h"
 
-ArtistService::ArtistService(AlbumRepository& arep,SongRepository& srep):albumrep(arep) , songrep(srep){};
-int ArtistService::createAlbum(int artistid,string& name){
-    Album album(name, 0,artistid);
-    return albumrep.save(album);
-};
+ArtistService::ArtistService(AlbumRepository& arep, SongRepository& srep, AccountRepository& accrep)
+    : albumrep(arep), songrep(srep), accountrep(accrep) {}
 void ArtistService::updateAlbum(Album& album){albumrep.save(album);};
 void ArtistService::deleteAlbum(int albumid){
     auto songs = songrep.getByAlbum(albumid);
@@ -22,6 +19,10 @@ void ArtistService::deleteSong(int songid){songrep.remove(songid);};
 vector<Album> ArtistService::getArtistAlbum(int artistid){return albumrep.albums(artistid);};
 vector<Song> ArtistService::getAlbumSong(int albumid){return songrep.getByAlbum(albumid);};
 vector<Song> ArtistService::getSingle(int artistid){return songrep.singleSongs(artistid);};
-
-
+void ArtistService::updateAccount(Account& account) { accountrep.save(account); }
+void ArtistService::deleteAccount(int id){ accountrep.remove(id); }
+int ArtistService::createAlbum(int artistid, string& name) {
+    Album album(name, 0, artistid);
+    return albumrep.save(album);
+}
 

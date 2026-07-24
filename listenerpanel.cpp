@@ -1,4 +1,3 @@
-#include "listenerrepository.h"
 #include "listenerpanel.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>

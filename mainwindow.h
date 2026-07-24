@@ -42,6 +42,24 @@ public:
         connect(signup, &SignUpWindow::switchToLogin, this, [this, login]() {
             stack->setCurrentWidget(login);
         });
+        connect(login, &LoginWindow::loginSuccess,
+                this, [this, &authservice](Account acc) {
+                    if (acc.role == Role::Artist) {
+                        auto* panel = new ArtistPanel(acc, artistservice);
+                        stack->addWidget(panel);
+
+                        connect(panel, &ArtistPanel::accountDeleted,
+                                this, [this, panel]() {
+                                    stack->setCurrentIndex(0);
+                                    stack->removeWidget(panel);
+                                    panel->deleteLater();
+                                });
+                    } else {
+                        stack->addWidget(new ListenerPanel(acc, listenerservice));
+                    }
+
+                    stack->setCurrentIndex(stack->count() - 1);
+                });
 
         stack->addWidget(login);
         stack->addWidget(signup);
